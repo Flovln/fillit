@@ -6,12 +6,12 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/14 14:49:16 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/16 15:58:51 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../fillit/libft/libft.h"
 
 static	int		ft_count_char(char *s, char c)
 {
@@ -31,11 +31,9 @@ int		ft_count_tetri(char *s)
 {
 	int	i;
 
-	i = ft_count_char(s, '\n');
-	i = i / 5;
-	if (!i)
-		return (0);
-	return (i + 1);
+	i = ft_count_char(s, '#');
+	i = i / 4;
+	return (i);
 }
 
 static	int		ft_check_grid(char *s)
@@ -53,9 +51,9 @@ static	int		ft_check_grid(char *s)
 	{
 		if (s[i] == '.' || s[i] == '#')
 			nb_char++;
-		if ((nb_char % 4 == 0) && s[i] == '\n' && s[i- 1] != '\n') //
+		if ((nb_char % 4 == 0) && s[i] == '\n' && s[i- 1] != '\n')
 			nb_line++;
-		if ((nb_line % 4 == 0) && s[i] == '\n' && s[i - 1] == '\n') //
+		if ((nb_line % 4 == 0) && s[i] == '\n' && s[i - 1] == '\n')
 			nb_tetri++;
 		i++;
 	}
@@ -79,7 +77,7 @@ static	int		ft_check_tetri(char *s)
 	{
 		if (s[i] == '#')
 		{
-			if (s[i - 1] != '#' && s[i + 1] != '#' && s[i - 5] != '#' && s[i + 5] != '#')
+			if (s[i - 1] != '#' && s[i + 1] != '#' && s[i + 5] != '#')
 			{
 				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);

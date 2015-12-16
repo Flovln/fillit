@@ -6,12 +6,12 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:21:50 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/14 11:26:33 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/16 15:07:11 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../fillit/libft/libft.h"
 
 char	*ft_read_file(char *file) //pointe sur un char car la fonction return un pointeur sur char
 {

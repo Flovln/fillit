@@ -6,12 +6,12 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 10:11:04 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/14 14:48:28 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/16 15:47:27 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../fillit/libft/libft.h"
 #include <stdio.h> ////test////
 
 int		main(int ac, char **av)
@@ -31,7 +31,7 @@ int		main(int ac, char **av)
 	}
 	else
 	{
-		ft_putstr("\n--------ERROR-------\n");
+		ft_putstr("\n-------ERROR-------\n");
 		return (0);
 	}
 }
