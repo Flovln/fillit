@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/16 15:58:51 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/17 16:04:30 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ static	int		ft_count_char(char *s, char c)
 	return (cmp);
 }
 
-int		ft_count_tetri(char *s)
+int				ft_count_tetri(char *s)
 {
-	int	i;
+	int i;
 
 	i = ft_count_char(s, '#');
 	i = i / 4;
 	return (i);
 }
 
+
 static	int		ft_check_grid(char *s)
 {
-	int	i;
+	int i;
 	int	nb_char;
 	int	nb_line;
 	int	nb_tetri;
@@ -51,7 +52,7 @@ static	int		ft_check_grid(char *s)
 	{
 		if (s[i] == '.' || s[i] == '#')
 			nb_char++;
-		if ((nb_char % 4 == 0) && s[i] == '\n' && s[i- 1] != '\n')
+		if ((nb_char % 4 == 0) && s[i] == '\n' && s[i - 1] != '\n')
 			nb_line++;
 		if ((nb_line % 4 == 0) && s[i] == '\n' && s[i - 1] == '\n')
 			nb_tetri++;
@@ -70,14 +71,22 @@ static	int		ft_check_tetri(char *s)
 {
 	int i;
 	int	j;
+	int count;
 
 	i = 0;
 	j = 0;
+	count = 0;
 	while (s[i])
 	{
 		if (s[i] == '#')
 		{
-			if (s[i - 1] != '#' && s[i + 1] != '#' && s[i + 5] != '#')
+			count++;
+			if (count <= 3 && s[i - 1] != '#' && s[i + 1] != '#' && s[i + 5] != '#')
+			{
+				write(1, "\n---UNVALID TETRI---", 20);
+				return (0);
+			}
+			if (count == 4 && s[i - 1] != '#' && s[i + 1] != '#' && s[i - 5] != '#')
 			{
 				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);
