@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/17 16:26:21 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/17 17:17:11 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 static	int		ft_count_char(char *s, char c)
 {
-	int cmp;
+	int count;
 
-	cmp = 0;
+	count = 0;
 	while (*s)
 	{
 		if (*s == c)
-			cmp++;
+			count++;
 		s++;
 	}
-	return (cmp);
+	return (count);
 }
 
 int				ft_count_tetri(char *s)
