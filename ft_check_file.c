@@ -6,35 +6,12 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/17 17:17:11 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/17 17:42:09 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../fillit/libft/libft.h"
-
-static	int		ft_count_char(char *s, char c)
-{
-	int count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s == c)
-			count++;
-		s++;
-	}
-	return (count);
-}
-
-int				ft_count_tetri(char *s)
-{
-	int i;
-
-	i = ft_count_char(s, '#');
-	i = i / 4;
-	return (i);
-}
 
 static	int		ft_check_grid(char *s)
 {
@@ -80,28 +57,35 @@ static	int		ft_check_tetri(char *s)
 			count++;
 			if (count <= 3 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s + 5) != '#')
-			{
-				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);
-			}
 			if (count == 4 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s - 5) != '#')
-			{
-				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);
-			}
 		}
 		s++;
 	}
-	write(1, "\n---VALID TETRI---", 18);
 	return (1);
+}
+
+static	int		ft_print_error_tetri(char *s)
+{
+	if (ft_check_tetri(s) == 0)
+	{
+		write(1, "\n---UNVALID TETRI---", 20);
+		return (0);
+	}
+	else
+	{
+		write(1, "\n---VALID TETRI---", 18);
+		return (1);
+	}
 }
 
 int				ft_check_file(char *s)
 {
 	if (s)
 	{
-		if (ft_check_grid(s) == 1 && ft_check_tetri(s) == 1)
+		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1)
 			return (1);
 	}
 	return (0);
