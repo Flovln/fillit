@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/17 16:04:30 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/17 16:26:21 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int				ft_count_tetri(char *s)
 	return (i);
 }
 
-
 static	int		ft_check_grid(char *s)
 {
 	int i;
@@ -60,7 +59,7 @@ static	int		ft_check_grid(char *s)
 	}
 	if (!s[i] && (nb_char % 16 == 0) && (nb_line % 4 == 0))
 		nb_tetri++;
-	if ((ft_count_char(s, '#') == nb_tetri * 4) && 
+	if ((ft_count_char(s, '#') == nb_tetri * 4) &&
 			(ft_count_char(s, '.') == nb_tetri * 12) &&
 			(ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
 		return (1);
@@ -69,30 +68,30 @@ static	int		ft_check_grid(char *s)
 
 static	int		ft_check_tetri(char *s)
 {
-	int i;
 	int	j;
 	int count;
 
-	i = 0;
 	j = 0;
 	count = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == '#')
+		if (*s == '#')
 		{
 			count++;
-			if (count <= 3 && s[i - 1] != '#' && s[i + 1] != '#' && s[i + 5] != '#')
+			if (count <= 3 && *(s - 1) != '#' && *(s + 1) != '#'
+					&& *(s + 5) != '#')
 			{
 				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);
 			}
-			if (count == 4 && s[i - 1] != '#' && s[i + 1] != '#' && s[i - 5] != '#')
+			if (count == 4 && *(s - 1) != '#' && *(s + 1) != '#'
+					&& *(s - 5) != '#')
 			{
 				write(1, "\n---UNVALID TETRI---", 20);
 				return (0);
 			}
 		}
-		i++;
+		s++;
 	}
 	write(1, "\n---VALID TETRI---", 18);
 	return (1);
