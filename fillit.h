@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:49:21 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/14 11:35:24 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/17 17:20:04 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	ft_error();
 char	*ft_read_file(char *file);
 int		ft_check_file(char *s);
 int		ft_count_tetri(char *s);
+int		ft_count_char(char *s, char c);
 
 #endif
