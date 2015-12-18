@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/18 10:36:08 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/18 11:57:29 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ static	int		ft_check_tab(char *s)
 
 static	int		ft_check_tetri(char *s)
 {
-	int	j;
 	int count;
 
-	j = 0;
 	count = 0;
 	while (*s)
 	{
