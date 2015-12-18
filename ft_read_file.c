@@ -6,14 +6,20 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:21:50 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/16 15:07:11 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/18 10:34:46 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "../fillit/libft/libft.h"
 
-char	*ft_read_file(char *file) //pointe sur un char car la fonction return un pointeur sur char
+void	ft_error()
+{
+	ft_putstr_fd("error", 2);
+	exit(0);
+}
+
+char	*ft_read_file(char *file)
 {
 	int		fd;
 	char	*buf;
