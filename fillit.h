@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:49:21 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/17 17:20:04 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/18 10:35:00 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <fcntl.h>
 
 # define BUF_SIZE 545 //26 pieces max x (1 grille =) 21 caracteres (20 + \n final ou \0 pour la derniere)
-//# define FALSE 0
-//# define TRUE 1
 
 void	ft_error();
 char	*ft_read_file(char *file);
