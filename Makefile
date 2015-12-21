@@ -6,11 +6,11 @@
 #    By: fviolin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/05 10:10:18 by fviolin           #+#    #+#              #
-#    Updated: 2015/12/21 11:00:57 by fviolin          ###   ########.fr        #
+#    Updated: 2015/12/21 11:18:39 by fviolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit.a 
+NAME = fillit 
 
 CFLAGS = -Wall -Wextra -Werror
 
