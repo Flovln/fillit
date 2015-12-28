@@ -6,14 +6,13 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/18 11:57:29 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/21 17:39:04 by lleverge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "../fillit/libft/libft.h"
 
-static	int		ft_check_tab(char *s)
+static	int		ft_check_grid(char *s)
 {
 	int i;
 	int	nb_char;
@@ -69,12 +68,12 @@ static	int		ft_print_error_tetri(char *s)
 {
 	if (ft_check_tetri(s) == 0)
 	{
-		ft_putstr("\n---UNVALID TETRI---");
+		write(1, "\n---UNVALID TETRI---", 20);
 		return (0);
 	}
 	else
 	{
-		ft_putstr("\n---VALID TETRI---");
+		write(1, "\n---VALID TETRI---", 18);
 		return (1);
 	}
 }
@@ -82,7 +81,9 @@ static	int		ft_print_error_tetri(char *s)
 int				ft_check_file(char *s)
 {
 	if (s)
-		if (ft_check_tab(s) == 1 && ft_print_error_tetri(s) == 1)
+	{
+		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1)
 			return (1);
+	}
 	return (0);
 }
