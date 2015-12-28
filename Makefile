@@ -3,41 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fviolin <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: lleverge <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/12/05 10:10:18 by fviolin           #+#    #+#              #
-#    Updated: 2015/12/21 11:18:39 by fviolin          ###   ########.fr        #
+#    Created: 2015/12/21 17:32:58 by lleverge          #+#    #+#              #
+#    Updated: 2015/12/28 15:14:47 by fviolin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit 
+NAME = fillit
 
-CFLAGS = -Wall -Wextra -Werror
+SRC =	main.c		ft_check_file.c		ft_lst.c	count.c\
+		ft_read_file.c	matrix.c			resolve.c
 
-SRCS = fillit.c\
-	   ft_check_file.c\
-	   ft_lst.c\
-	   ft_read_file.c\
-	   matrix.c\
-	   resolve.c
+INCLUDES = -I libft/ -I./
 
-OBJS = $(SRCS:.c=.o)
+LIBS = -L./libft -lft
 
-RM = rm -f
+FLAGS = -Wall -Wextra -Werror
+
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(FLAGS) -c $(SRCS) -I fillit.h
-	ar r $(NAME) $(OBJS)
-	ranlib $(NAME)
+$(NAME): $(OBJ)
+	gcc $(FLAGS) -o $(NAME) $(LIBS) $^
+
+%.o: %.c
+	gcc $(FLAGS) $(INCLUDES) -c $^
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJ)
+	rm -f *~
 
-fclean:clean
-	$(RM) $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re:fclean all
-
-.PHONY: all clean fclean re
+re: fclean all
