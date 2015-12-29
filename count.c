@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 14:45:22 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/29 13:00:43 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/29 13:01:55 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ int		count_offsetx(char **piece)
 	offsetx = 42;
 	while (i < 4)
 	{
+		j = 0;
 		while (j < 4)
 		{
 			if (piece[i][j] == '#' && j < offsetx)
 				offsetx = j;
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 	return (offsetx);
