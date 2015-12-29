@@ -6,7 +6,7 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:19:23 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/28 16:46:17 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/29 13:47:48 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int		put_piece(t_matrix matrix, t_tetri *list, int l, int c)
 	int j;
 
 	i = OFFSETY;
-	while (i <= list->height)
+	while (i < OFFSETY + list->height)
 	{
 		j = OFFSETX;
-		while (j <= list->width)
+		while (j <= OFFSETX + list->width)
 		{
 			if (TETRI[i][j] == '#')
 				MATRIX[l + i - OFFSETY][c + j - OFFSETX] = LETTER;
