@@ -32,7 +32,7 @@ t_tetri		*tetri_lstnew(char **piece, char let)
 	return (new);
 }
 
-void		add_end(t_tetri **head, t_tetri *new) //**head?!
+void		add_end(t_tetri **head, t_tetri *new)
 {
 	t_tetri *cur;
 
