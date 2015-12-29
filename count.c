@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 14:45:22 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/28 15:22:12 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/29 13:00:43 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,25 @@ int		count_height(char **piece)
 	int i;
 	int j;
 	int count;
-	int	flag;
+	int	count_max;
 
-	i = 0;
-	count = 0;
-	flag = 0;
-	while (piece[i] != 0)
+	j = 0;
+	count_max = 0;
+	while (j < 4)
 	{
-		j = 0;
-		while (piece[i][j])
+		i = 0;
+		count = 0;
+		while (i < 4)
 		{
-			if (piece[i][j] == '#' && i == 0 && flag == 0)
-			{
+			if (piece[i][j] == '#')
 				count++;
-				flag = 1;
-			}
-			if (i > 0 && piece[i][j] == '#' && piece[i - 1][j] == '#'
-					&& flag == 0)
-			{
-				flag = 1;
-				count++;
-			}
-			j++;
+			if (count > count_max)
+				count_max = count;
+			i++;
 		}
-		flag = 0;
-		i++;
+		j++;
 	}
-	return (count);
+	return (count_max);
 }
 
 int		count_width(char **piece)
