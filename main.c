@@ -102,7 +102,7 @@ int			main(int ac, char **av)
 		free_matrix(&matrix);
 	}
 	else
-	//while (1); Memory leak checking
 		ft_putstr("error\n");
+	//while (1);
 	return (0);
 }
