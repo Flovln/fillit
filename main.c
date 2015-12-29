@@ -6,12 +6,11 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:06:47 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/28 16:25:14 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/29 16:24:58 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h> ///////TEST//////////////
 
 char		**ft_split_tetri(char **tab, int start, int end)
 {
@@ -79,32 +78,28 @@ int			main(int ac, char **av)
 	char		**tab;
 	t_tetri		*list;
 	t_matrix	matrix;
-	int			i;
 
-	i = 2;
 	if (ac != 2)
 		ft_error();
 	else if (ft_check_file(ft_read_file(av[1])) == 1)
 	{
 		piece_nbr = ft_count_tetri(ft_read_file(av[1]));
-		ft_putstr("\n-------OK--------\n");
-		printf("Nb tetri : %d\n\n", piece_nbr);
+		//printf("Nb tetri : %d\n\n", piece_nbr);
 		tab = pieces_intab(av[1]);
 		list = piece_inlist(piece_nbr, tab);
 		free_tab(tab);
-		printf("Hauteur: %d\nLargeur: %d\n", list->height, list->width);
-		printf("Offx: %d\nOffy: %d\n", OFFSETX, OFFSETY);
+		//printf("Hauteur: %d\nLargeur: %d\n", list->height, list->width);
+		//printf("Offx: %d\nOffy: %d\n", OFFSETX, OFFSETY);
 		matrix = init_matrix(2);
 		while (solver(matrix, list) == 1)
-		{
-			i++;
-			printf("taille matrice: %d\n", i);
+			//i++;
+			//printf("taille matrice: %d\n", i);
 			matrix = increase_matrix(matrix);
-		}
 		free_list(list);
+		print_matrix(matrix);
 		free_matrix(&matrix);
 	}
 	else
-		ft_putstr("FORMAT ERROR\n");
+		ft_putstr("error\n");
 	return (0);
 }

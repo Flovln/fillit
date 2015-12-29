@@ -6,12 +6,12 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:19:23 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/29 13:47:48 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/29 16:25:59 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 void	remove_piece(t_matrix matrix, char letter)
 {
@@ -75,8 +75,8 @@ int		put_piece(t_matrix matrix, t_tetri *list, int l, int c)
 		}
 		i++;
 	}
-	print_matrix(matrix);
-	ft_putchar('\n');
+	//print_matrix(matrix);
+	//ft_putchar('\n');
 	return (0);
 }
 
