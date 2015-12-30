@@ -42,12 +42,11 @@ static	int		ft_check_grid(char *s)
 	return (0);
 }
 
-static	int		ft_check_tetri(char *s) //int piece_nbr
+static	int		ft_check_tetri(char *s)
 {
 	int count;
 
 	count = 0;
-	//while ( < piece_nbr)
 	while (*s)
 	{
 		if (*s == '#')

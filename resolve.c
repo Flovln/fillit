@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-//#include <stdio.h>
 
 void	remove_piece(t_matrix matrix, char letter)
 {
@@ -76,7 +75,6 @@ int		put_piece(t_matrix matrix, t_tetri *list, int l, int c)
 		i++;
 	}
 	//print_matrix(matrix);
-	//ft_putchar('\n');
 	return (0);
 }
 
