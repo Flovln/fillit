@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/28 14:45:22 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/29 13:29:09 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/30 10:21:45 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		count_width(char **piece)
 			if (piece[i][j] != '.')
 			{
 				count++;
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -53,7 +53,7 @@ int		count_height(char **piece)
 			if (piece[i][j] != '.')
 			{
 				count++;
-				break;
+				break ;
 			}
 			j++;
 		}
