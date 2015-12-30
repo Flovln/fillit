@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/30 17:39:59 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/30 17:46:35 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static	int		ft_check_grid(char *s)
 	if ((ft_count_char(s, '#') == nb_tetri * 4) &&
 			(ft_count_char(s, '.') == nb_tetri * 12) &&
 			(ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 static	int		ft_check_tetri(char *s)
@@ -54,32 +54,32 @@ static	int		ft_check_tetri(char *s)
 			count++;
 			if (count % 4 != 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s + 5) != '#')
-				return (0);
+				return (1);
 			if (count % 4 == 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s - 5) != '#')
-				return (0);
+				return (1);
 		}
 		s++;
 	}
-	return (1);
+	return (0);
 }
 
 static	int		ft_print_error_tetri(char *s)
 {
-	if (ft_check_tetri(s) == 0)
+	if (ft_check_tetri(s) == 1)
 		//write(1, "\n---UNVALID TETRI---", 20);
-		return (0);
+		return (1);
 	else
 		//write(1, "\n---VALID TETRI---", 18);
-		return (1);
+		return (0);
 }
 
 int				ft_check_file(char *s)
 {
 	if (s)
 	{
-		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1)
-			return (1);
+		if (ft_check_grid(s) == 0 && ft_print_error_tetri(s) == 0)
+			return (0);
 	}
-	return (0);
+	return (1);
 }
