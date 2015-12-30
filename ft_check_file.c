@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/30 12:01:14 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/30 17:39:59 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static	int		ft_check_grid(char *s)
 	int	nb_line;
 	int	nb_tetri;
 
-	i = -1; //car on va incrementer (+1) s[i] avant meme le premier tour de boucle
+	/* on va incrementer (+1) s[i] avant meme le premier tour de boucle*/
+	i = -1;
 	nb_char = 0;
 	nb_line = 0;
 	nb_tetri = 0;
@@ -51,10 +52,10 @@ static	int		ft_check_tetri(char *s)
 		if (*s == '#')
 		{
 			count++;
-			if (count <= 3 && *(s - 1) != '#' && *(s + 1) != '#'
+			if (count % 4 != 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s + 5) != '#')
 				return (0);
-			if (count == 4 && *(s - 1) != '#' && *(s + 1) != '#'
+			if (count % 4 == 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s - 5) != '#')
 				return (0);
 		}
