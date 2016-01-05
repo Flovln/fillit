@@ -38,8 +38,8 @@ static	int		ft_check_grid(char *s)
 	if ((ft_count_char(s, '#') == nb_tetri * 4) &&
 			(ft_count_char(s, '.') == nb_tetri * 12) &&
 			(ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 static	int		ft_check_tetri(char *s)
@@ -52,32 +52,26 @@ static	int		ft_check_tetri(char *s)
 		if (*s == '#')
 		{
 			count++;
-<<<<<<< HEAD
 			if (count % 4 != 0 && *(s + 4) != '#' && *(s + 1) != '#'
 					&& *(s + 5) != '#')
 				return (0);
-=======
-			if (count % 4 != 0 && *(s - 1) != '#' && *(s + 1) != '#'
-					&& *(s + 5) != '#')
-				return (1);
->>>>>>> ee218f6c48426717defe1ca0695442f29fe4e891
 			if (count % 4 == 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s - 5) != '#')
-				return (1);
+				return (0);
 		}
 		s++;
 	}
-	return (0);
+	return (1);
 }
 
 static	int		ft_print_error_tetri(char *s)
 {
-	if (ft_check_tetri(s) == 1)
+	if (ft_check_tetri(s) == 0)
 		//write(1, "\n---UNVALID TETRI---", 20);
-		return (1);
+		return (0);
 	else
 		//write(1, "\n---VALID TETRI---", 18);
-		return (0);
+		return (1);
 }
 
 static	int		ft_check_newline(char *s)
