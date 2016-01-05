@@ -12,7 +12,7 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# include <libft/libft.h>
+# include "libft/libft.h"
 # include <fcntl.h>
 # define BUF_SIZE 546
 # define OFFSETX list->offsetx
@@ -44,9 +44,11 @@ typedef struct			s_tetri
 t_tetri					*tetri_lstnew(char **piece, char let);
 void					add_end(t_tetri **head, t_tetri *new);
 void					print_matrix(t_matrix matrix);
-void					free_list(t_tetri *list);
-void					free_tab(char **tab);
-void					free_matrix(t_matrix *matrix);
+
+void					ft_free_list(t_tetri **head);
+void					ft_free_tab(char **tab);
+void					ft_free_matrix(t_matrix *matrix);
+
 char					*ft_newline(int size);
 t_matrix				increase_matrix(t_matrix matrix);
 t_matrix				init_matrix(int size);

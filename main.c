@@ -35,9 +35,7 @@ char		**pieces_intab(char *file_name)
 	int		fd;
 	int		ret;
 	char	**tab;
-	int		i;
 
-	i = 0;
 	buf[545] = '\0';
 	ft_bzero(buf, BUF_SIZE);
 	fd = open(file_name, O_RDONLY);
@@ -89,7 +87,7 @@ int			main(int ac, char **av)
 		//printf("Nb tetri : %d\n\n", piece_nbr);
 		tab = pieces_intab(av[1]);
 		list = piece_inlist(piece_nbr, tab);
-		free_tab(tab);
+		ft_free_tab(tab);
 		/*printf("Hauteur: %d\nLargeur: %d\n", list->height, list->width);
 		printf("Offx: %d\nOffy: %d\n", OFFSETX, OFFSETY);*/
 		matrix = init_matrix(2);
@@ -97,12 +95,11 @@ int			main(int ac, char **av)
 		//i++;
 		//printf("Taille matrice: %d\n", i);
 			matrix = increase_matrix(matrix);
-		free_list(list);
+		ft_free_list(&list);
 		print_matrix(matrix);
-		free_matrix(&matrix);
+		ft_free_matrix(&matrix);
 	}
 	else
 		ft_putstr("error\n");
-	//while (1);
 	return (0);
 }

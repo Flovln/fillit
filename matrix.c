@@ -55,20 +55,14 @@ t_matrix		increase_matrix(t_matrix matrix)
 	t_matrix	new_matrix;
 
 	new_matrix = init_matrix(matrix.height + 1);
+	ft_free_matrix(&matrix);
 	return (new_matrix);
 }
 
-void			free_matrix(t_matrix *matrix)
+void			ft_free_matrix(t_matrix *matrix)
 {
-	int	i;
-
-	i = 0;
-	while (matrix->draw[i] != 0)
-	{
-		ft_strdel(&(matrix->draw[i]));
-		i++;
-	}
-	matrix->draw = NULL;
+	ft_free_tab(matrix->draw);
+	matrix = NULL;
 }
 
 void			print_matrix(t_matrix matrix)

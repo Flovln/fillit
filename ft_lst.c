@@ -47,19 +47,19 @@ void		add_end(t_tetri **head, t_tetri *new)
 	cur->next = new;
 }
 
-void		free_list(t_tetri *list)
+void		ft_free_list(t_tetri **head)
 {
-	int		i;
-	t_tetri	*tmp;
+	t_tetri	*current;
+	t_tetri	*next;
 
-	i = 0;
-	while (list != NULL)
+	current = *head;
+	while (current != NULL)
 	{
-		tmp = list;
-		list = list->next;
-		free_tab(tmp->tetri);
-		tmp->tetri = NULL;
-		free(tmp);
+		next = current->next;
+		ft_free_tab(current->tetri);
+		current->tetri = NULL;
+		free(current);
+		current = next;
 	}
-	free(list);
+	*head = NULL;
 }

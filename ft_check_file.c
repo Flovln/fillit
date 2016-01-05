@@ -52,10 +52,10 @@ static	int		ft_check_tetri(char *s)
 		if (*s == '#')
 		{
 			count++;
-			if (count <= 3 && *(s - 1) != '#' && *(s + 1) != '#'
+			if (count % 4 != 0 && *(s + 4) != '#' && *(s + 1) != '#'
 					&& *(s + 5) != '#')
 				return (0);
-			if (count == 4 && *(s - 1) != '#' && *(s + 1) != '#'
+			if (count % 4 == 0 && *(s - 1) != '#' && *(s + 1) != '#'
 					&& *(s - 5) != '#')
 				return (0);
 		}
@@ -74,11 +74,32 @@ static	int		ft_print_error_tetri(char *s)
 		return (1);
 }
 
+static	int		ft_check_newline(char *s)
+{
+	int nb_char;
+	int	nb_line;
+
+	nb_char = 0;
+	nb_line = 0;
+	while (*s)
+	{
+		if (*s == '.' || *s == '#')
+			nb_char++;
+		if ((nb_char % 4 == 0) && *s == '\n' && *(s - 1) != '\n')
+			nb_line++;
+		if (*s != '\n' && *(s - 1) != '\n' && nb_line % 5 == 0)
+			return (1);
+		s++;
+	}
+	return (0);
+}
+
 int				ft_check_file(char *s)
 {
 	if (s)
 	{
-		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1)
+		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1
+				&& ft_check_newline(s) == 1)
 			return (1);
 	}
 	return (0);

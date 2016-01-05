@@ -30,7 +30,7 @@ char	*ft_read_file(char *file)
 
 void	ft_error(void)
 {
-	ft_putstr_fd("error", 2);
+	ft_putstr_fd("error\n", 1);
 	exit(0);
 }
 
@@ -54,10 +54,11 @@ int		ft_count_tetri(char *s)
 
 	i = ft_count_char(s, '#');
 	i = i / 4;
+	free(s);
 	return (i);
 }
 
-void	free_tab(char **tab)
+void	ft_free_tab(char **tab)
 {
 	int	i;
 
