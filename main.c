@@ -6,7 +6,7 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:06:47 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/29 16:24:58 by fviolin          ###   ########.fr       */
+/*   Updated: 2015/12/30 17:45:11 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			main(int ac, char **av)
 	//i = 2;
 	if (ac != 2)
 		ft_error();
-	else if (ft_check_file(ft_read_file(av[1])) == 1)
+	else if (ft_check_file(ft_read_file(av[1])) == 0)
 	{
 		piece_nbr = ft_count_tetri(ft_read_file(av[1]));
 		//printf("Nb tetri : %d\n\n", piece_nbr);
