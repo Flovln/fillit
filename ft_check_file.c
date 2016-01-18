@@ -6,20 +6,19 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2015/12/30 17:46:35 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/18 15:43:33 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static	int		ft_check_grid(char *s)
+static	int		ft_check_char(char *s)
 {
 	int i;
 	int	nb_char;
 	int	nb_line;
 	int	nb_tetri;
 
-	/* on va incrementer (+1) s[i] avant meme le premier tour de boucle*/
 	i = -1;
 	nb_char = 0;
 	nb_line = 0;
@@ -36,71 +35,89 @@ static	int		ft_check_grid(char *s)
 	if (!s[i] && (nb_char % 16 == 0) && (nb_line % 4 == 0))
 		nb_tetri++;
 	if ((ft_count_char(s, '#') == nb_tetri * 4) &&
-			(ft_count_char(s, '.') == nb_tetri * 12) &&
-			(ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
+			(ft_count_char(s, '.') == nb_tetri * 12)
+			&& (ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
 		return (1);
 	return (0);
 }
 
-static	int		ft_check_tetri(char *s)
+static int	ft_check_line(char *s)
 {
-	int count;
+	int cnt;
 
-	count = 0;
 	while (*s)
 	{
-		if (*s == '#')
+		cnt = 0;
+		while (*s != '\n')
 		{
-			count++;
-			if (count % 4 != 0 && *(s + 4) != '#' && *(s + 1) != '#'
-					&& *(s + 5) != '#')
-				return (0);
-			if (count % 4 == 0 && *(s - 1) != '#' && *(s + 1) != '#'
-					&& *(s - 5) != '#')
-				return (0);
+			s++;
+			cnt++;
 		}
-		s++;
-	}
-	return (1);
-}
-
-static	int		ft_print_error_tetri(char *s)
-{
-	if (ft_check_tetri(s) == 0)
-		//write(1, "\n---UNVALID TETRI---", 20);
-		return (0);
-	else
-		//write(1, "\n---VALID TETRI---", 18);
-		return (1);
-}
-
-static	int		ft_check_newline(char *s)
-{
-	int nb_char;
-	int	nb_line;
-
-	nb_char = 0;
-	nb_line = 0;
-	while (*s)
-	{
-		if (*s == '.' || *s == '#')
-			nb_char++;
-		if ((nb_char % 4 == 0) && *s == '\n' && *(s - 1) != '\n')
-			nb_line++;
-		if (*s != '\n' && *(s - 1) != '\n' && nb_line % 5 == 0)
-			return (1);
-		s++;
+		if (cnt != 4)
+			ft_error();
+		else if (*s == '\n' && *(s + 1) == '\n')
+			s += 2;
+		else
+			s++;
 	}
 	return (0);
 }
 
-int				ft_check_file(char *s)
+static int	ft_check_next_diez(char *s, int i, int diez)
 {
-	if (s)
+	if (diez < 4)
 	{
-		if (ft_check_grid(s) == 1 && ft_print_error_tetri(s) == 1
-				&& ft_check_newline(s) == 1)
+		if (s[i + 1] != '#' && s[i + 5] != '#')
+		{
+			while (s[i - 1] == '#')
+			{
+				if (s[i + 4] == '#')
+					return (0);
+				i--;
+			}
 			return (1);
+		}
 	}
+	return (0);
+}
+
+static int	ft_check_shape(char *s, size_t i, int cnt)
+{
+	int diez;
+
+	diez = 0;
+	while (i < ft_strlen(s) + 1)
+	{
+		if (s[i] == '#')
+		{
+			diez++;
+			if (ft_check_next_diez(s, i, diez) == 1)
+				ft_error();
+		}
+		if (s[i] == '\n')
+			cnt++;
+		if (cnt == 4)
+		{
+			if (diez != 4)
+				ft_error();
+			diez = 0;
+			cnt = 0;
+			i++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int			ft_check_file(char *str)
+{
+	size_t 	i;
+	int 	cnt;
+
+	i = 0;
+	cnt = 0;
+	ft_check_char(str);
+	ft_check_line(str);
+	ft_check_shape(str, i, cnt);
 	return (0);
 }
