@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2016/01/18 15:43:33 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/18 15:53:33 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ static	int		ft_check_char(char *s)
 	return (0);
 }
 
-static int	ft_check_line(char *s)
+static	int		ft_check_line(char *s)
 {
-	int cnt;
+	int count;
 
 	while (*s)
 	{
-		cnt = 0;
+		count = 0;
 		while (*s != '\n')
 		{
 			s++;
-			cnt++;
+			count++;
 		}
-		if (cnt != 4)
+		if (count != 4)
 			ft_error();
 		else if (*s == '\n' && *(s + 1) == '\n')
 			s += 2;
@@ -63,7 +63,7 @@ static int	ft_check_line(char *s)
 	return (0);
 }
 
-static int	ft_check_next_diez(char *s, int i, int diez)
+static	int		ft_check_next_diez(char *s, int i, int diez)
 {
 	if (diez < 4)
 	{
@@ -81,7 +81,7 @@ static int	ft_check_next_diez(char *s, int i, int diez)
 	return (0);
 }
 
-static int	ft_check_shape(char *s, size_t i, int cnt)
+static	int		ft_check_shape(char *s, size_t i, int count)
 {
 	int diez;
 
@@ -95,13 +95,13 @@ static int	ft_check_shape(char *s, size_t i, int cnt)
 				ft_error();
 		}
 		if (s[i] == '\n')
-			cnt++;
-		if (cnt == 4)
+			count++;
+		if (count == 4)
 		{
 			if (diez != 4)
 				ft_error();
 			diez = 0;
-			cnt = 0;
+			count = 0;
 			i++;
 		}
 		i++;
@@ -109,15 +109,15 @@ static int	ft_check_shape(char *s, size_t i, int cnt)
 	return (0);
 }
 
-int			ft_check_file(char *str)
+int				ft_check_file(char *str)
 {
-	size_t 	i;
-	int 	cnt;
+	size_t	i;
+	int		count;
 
 	i = 0;
-	cnt = 0;
+	count = 0;
 	ft_check_char(str);
 	ft_check_line(str);
-	ft_check_shape(str, i, cnt);
+	ft_check_shape(str, i, count);
 	return (0);
 }
