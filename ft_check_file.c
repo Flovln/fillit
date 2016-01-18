@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-static	int		ft_check_char(char *s)
+static	int		ft_check_tab(char *s)
 {
 	int i;
 	int	nb_char;
@@ -116,7 +116,7 @@ int				ft_check_file(char *str)
 
 	i = 0;
 	count = 0;
-	ft_check_char(str);
+	ft_check_tab(str);
 	ft_check_line(str);
 	ft_check_shape(str, i, count);
 	return (0);
