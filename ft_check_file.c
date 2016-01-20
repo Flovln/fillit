@@ -6,41 +6,11 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2016/01/20 11:33:02 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/20 14:08:36 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-/*
-static	int		ft_check_tab(char *s)
-{
-	int i;
-	int	nb_char;
-	int	nb_line;
-	int	nb_tetri;
-
-	i = -1;
-	nb_char = 0;
-	nb_line = 0;
-	nb_tetri = 0;
-	while (s[++i])
-	{
-		if (s[i] == '.' || s[i] == '#')
-			nb_char++;
-		if ((nb_char % 4 == 0) && s[i] == '\n' && s[i - 1] != '\n')
-			nb_line++;
-		if ((nb_line % 4 == 0) && s[i] == '\n' && s[i - 1] == '\n')
-			nb_tetri++;
-	}
-	if (!s[i] && (nb_char % 16 == 0) && (nb_line % 4 == 0))
-		nb_tetri++;
-	if ((ft_count_char(s, '#') == nb_tetri * 4) &&
-			(ft_count_char(s, '.') == nb_tetri * 12)
-			&& (ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
-		return (1);
-	return (0);
-}
-*/
 
 static int	ft_check_tab(char *str, int *tab)
 {
