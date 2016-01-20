@@ -6,13 +6,13 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2016/01/18 15:53:33 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/20 11:33:02 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-static	int		ft_check_char(char *s)
+/*
+static	int		ft_check_tab(char *s)
 {
 	int i;
 	int	nb_char;
@@ -38,6 +38,30 @@ static	int		ft_check_char(char *s)
 			(ft_count_char(s, '.') == nb_tetri * 12)
 			&& (ft_count_char(s, '\n') == nb_line + nb_tetri - 1))
 		return (1);
+	return (0);
+}
+*/
+
+static int	ft_check_tab(char *str, int *tab)
+{
+	if (!str[tab[0]])
+		ft_error();
+	while (str[tab[0]])
+	{
+		if (str[tab[0]] == '.')
+			tab[1]++;
+		if (str[tab[0]] == '#')
+			tab[2]++;
+		if (str[tab[0]] == '\n' && str[tab[0] + 1] != '\n')
+			tab[3]++;
+		if ((str[tab[0]] == '\n' && str[tab[0] + 1] == '\n')
+				|| (str[tab[0]] == '\n' && str[tab[0] + 1] == '\0'))
+			tab[4]++;
+		tab[0]++;
+	}
+	if (tab[4] == 0 || tab[1] != (12 * tab[4]) || tab[2] != (4 * tab[4])
+			|| tab[3] != (tab[4] * 4))
+		ft_error();
 	return (0);
 }
 
@@ -109,15 +133,25 @@ static	int		ft_check_shape(char *s, size_t i, int count)
 	return (0);
 }
 
-int				ft_check_file(char *str)
+int			ft_check_file(char *str)
 {
-	size_t	i;
-	int		count;
+	int i;
+	int cnt;
+	int *tab;
 
 	i = 0;
-	count = 0;
-	ft_check_char(str);
+	cnt = 0;
+	if (!(tab = (int *)malloc(sizeof(int) * 5)))
+		ft_error();
+	tab[0] = 0;
+	tab[1] = 0;
+	tab[2] = 0;
+	tab[3] = 0;
+	tab[4] = 0;
+	ft_check_tab(str, tab);
 	ft_check_line(str);
-	ft_check_shape(str, i, count);
+	ft_check_shape(str, i, cnt);
+	free(tab);
+	tab = NULL;
 	return (0);
 }
