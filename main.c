@@ -6,7 +6,7 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:06:47 by lleverge          #+#    #+#             */
-/*   Updated: 2016/01/18 15:53:44 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/20 16:59:41 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,17 @@ int			main(int ac, char **av)
 	char		**tab;
 	t_tetri		*list;
 	t_matrix	matrix;
-	//int		i;
 
-	//i = 2;
 	if (ac != 2)
 		ft_error();
 	else if (ft_check_file(ft_read_file(av[1])) == 0)
 	{
 		piece_nbr = ft_count_tetri(ft_read_file(av[1]));
-		//printf("Nb tetri : %d\n\n", piece_nbr);
 		tab = pieces_intab(av[1]);
 		list = piece_inlist(piece_nbr, tab);
 		ft_free_tab(tab);
-		/*printf("Hauteur: %d\nLargeur: %d\n", list->height, list->width);
-		printf("Offx: %d\nOffy: %d\n", OFFSETX, OFFSETY);*/
 		matrix = init_matrix(2);
 		while (solver(matrix, list) == 1)
-		//i++;
-		//printf("Taille matrice: %d\n", i);
 			matrix = increase_matrix(matrix);
 		ft_free_list(&list);
 		print_matrix(matrix);

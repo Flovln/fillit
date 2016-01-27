@@ -6,12 +6,12 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 14:19:23 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/29 16:25:59 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/27 10:39:12 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
+/*permet d'effacer la piece teste si elle ne va pas*/
 void	remove_piece(t_matrix matrix, char letter)
 {
 	int i;
@@ -30,7 +30,7 @@ void	remove_piece(t_matrix matrix, char letter)
 		i++;
 	}
 }
-
+/*verifie si on a la place de mettre notre piece (1 tetri) a l'emplacement ou l'on est*/
 int		valid_piece(int l, int c, t_matrix matrix, t_tetri *list)
 {
 	int		i;
@@ -56,7 +56,7 @@ int		valid_piece(int l, int c, t_matrix matrix, t_tetri *list)
 	}
 	return (0);
 }
-
+/*permet de placer la piece au bon endroit*/
 int		put_piece(t_matrix matrix, t_tetri *list, int l, int c)
 {
 	int i;
@@ -74,7 +74,6 @@ int		put_piece(t_matrix matrix, t_tetri *list, int l, int c)
 		}
 		i++;
 	}
-	//print_matrix(matrix);
 	return (0);
 }
 

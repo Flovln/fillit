@@ -6,7 +6,7 @@
 /*   By: lleverge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 10:46:18 by lleverge          #+#    #+#             */
-/*   Updated: 2015/12/28 15:10:52 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/27 10:37:37 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ t_tetri		*tetri_lstnew(char **piece, char let)
 
 void		add_end(t_tetri **head, t_tetri *new)
 {
-	t_tetri *cur;
+	t_tetri *current;
 
 	if (!*head)
 	{
 		*head = new;
 		return ;
 	}
-	cur = *head;
-	while (cur->next)
-		cur = cur->next;
-	cur->next = new;
+	current = *head;
+	while (current->next)
+		current = current->next;
+	current->next = new;
 }
 
 void		ft_free_list(t_tetri **head)
@@ -53,13 +53,13 @@ void		ft_free_list(t_tetri **head)
 	t_tetri	*next;
 
 	current = *head;
-	while (current != NULL)
+	while (current)
 	{
 		next = current->next;
 		ft_free_tab(current->tetri);
 		current->tetri = NULL;
 		free(current);
-		current = next;
+		current = next; //assigne next a current, afin de repartir depuis le dernier maillon qui a ete free
 	}
 	*head = NULL;
 }

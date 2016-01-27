@@ -6,7 +6,7 @@
 /*   By: fviolin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:26:28 by fviolin           #+#    #+#             */
-/*   Updated: 2016/01/20 14:13:32 by fviolin          ###   ########.fr       */
+/*   Updated: 2016/01/21 15:48:36 by fviolin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_check_tab(char *str, int *tab)
 		ft_error();
 	return (0);
 }
-
+/*verifie le nombre de ligne par grilles*/
 static	int		ft_check_line(char *s)
 {
 	int count;
@@ -89,10 +89,10 @@ static	int		ft_check_shape(char *s, size_t i, int count)
 				ft_error();
 		}
 		if (s[i] == '\n')
-			count++;
-		if (count == 4)
+			count++; // count le nombre de ligne
+		if (count == 4) // si il y a bien 4 lignes
 		{
-			if (diez != 4)
+			if (diez != 4) // si il n'y a pas 4 diez
 				ft_error();
 			diez = 0;
 			count = 0;
@@ -123,5 +123,6 @@ int			ft_check_file(char *str)
 	ft_check_shape(str, i, cnt);
 	free(tab);
 	tab = NULL;
+	ft_strdel(&str);
 	return (0);
 }
