@@ -1,11 +1,11 @@
 # fillit
 
 Project for Ecole 42 - PARIS.
-By fviolin and lleverge.
+By fviolin and Lleverge.
 
 Tetris inspired.
 
-Fillit's goal wasn't to recode Tetris, but keeps the same general's spirit. The program takes a file as a parameter,
+Fillit's goal wasn't to recode Tetris, but keeps the same general's idea. The program takes a file as parameter,
 describing a list of Tetrominoes it will have to match between eachothers to get the smaller possible square.
 The goal is to get this square as fast as possible as layout possibilities grows each time a new piece is added.
 
